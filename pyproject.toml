@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bbabang-data-pipeline"
+version = "0.1.0"
+description = "BBABANG escape room review ETL pipeline"
+requires-python = ">=3.11"
+dependencies = [
+    "pandas>=2.2,<3",
+    "numpy>=1.26,<3",
+    "requests>=2.31,<3",
+    "SQLAlchemy>=2,<3",
+    "PyMySQL>=1.1,<2",
+    "python-dotenv>=1,<2",
+    "urllib3>=2.2,<3"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
