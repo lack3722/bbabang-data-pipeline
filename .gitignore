@@ -1,10 +1,34 @@
+# 환경 변수 / 민감정보
 .env
+
+# Python
 __pycache__/
 *.py[cod]
+*.pyo
+.pytest_cache/
+.ruff_cache/
+
+# 가상환경
+.venv/
+venv/
+env/
+
+# VS Code 개인 설정
+.vscode/
+
+# Jupyter
 .ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# ETL 생성 데이터
 data/raw/*
 data/processed/*
 data/quarantine/*
+
+# 디렉터리 구조는 Git에 유지
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 !data/quarantine/.gitkeep
