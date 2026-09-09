@@ -1,0 +1,42 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: BBABANG crawling Lambda deployed with AWS SAM
+
+Parameters:
+  FirebaseApiKey:
+    Type: String
+    Default: ""
+    NoEcho: true
+    Description: Optional Firebase API key for Firestore requests
+
+Globals:
+  Function:
+    Runtime: python3.11
+    Architectures:
+      - x86_64
+    MemorySize: 512
+    Timeout: 900
+    Tracing: Active
+    Environment:
+      Variables:
+        TZ: Asia/Seoul
+        BBABANG_DATA_DIR: /tmp/bbabang-data
+        FIREBASE_API_KEY: !Ref FirebaseApiKey
+
+Resources:
+  CrawlingFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: bbabang-crawling
+      Description: Collect BBABANG escape-room review data from Firestore
+      CodeUri: .
+      Handler: handlers.crawling_handler.lambda_handler
+      EphemeralStorage:
+        Size: 1024
+      Policies:
+        - AWSLambdaBasicExecutionRole
+
+Outputs:
+  CrawlingFunctionArn:
+    Description: BBABANG Crawling Lambda ARN
+    Value: !GetAtt CrawlingFunction.Arn
