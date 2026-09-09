@@ -1,0 +1,7 @@
+pandas<3,>=2.2
+numpy<3,>=1.26
+requests<3,>=2.31
+SQLAlchemy<3,>=2
+PyMySQL<2,>=1.1
+python-dotenv<2,>=1
+urllib3<3,>=2.2

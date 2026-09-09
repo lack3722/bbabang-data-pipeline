@@ -7,8 +7,8 @@ import logging
 from pathlib import Path
 from typing import Any
 
-from src.bbabang_pipeline.config import ROOM_ID_END, ROOM_ID_START, now_kst
-from src.bbabang_pipeline.extract import run_extract
+from bbabang_pipeline.config import ROOM_ID_END, ROOM_ID_START, now_kst
+from bbabang_pipeline.extract import run_extract
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
